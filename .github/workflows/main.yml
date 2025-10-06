@@ -1,9 +1,9 @@
 name: Run Mabl Tests
-
 on:
-  push:
-    branches: [ main ]
   pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
 
 jobs:
   run-mabl-tests:
@@ -12,8 +12,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install Mabl CLI
-        run: npm install -g @mablhq/mabl-cli
-
-      - name: Run Mabl Plan
-        run: mabl tests:run --plan-id ${{ secrets.MABL_PLAN_ID }} --api-key ${{ secrets.MABL_API_KEY }}
+      - name: Run Mabl Test Plan
+        uses: mablhq/github-run-tests-action@v1
+        with:
+          apiKey: ${{ secrets.MABL_API_KEY }}
+          appId: <your-app-id>
+          planId: <your-plan-id>
