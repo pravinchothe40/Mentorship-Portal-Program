@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-mabl-tests:
-    runs-on: ubuntu-latest
+    runs-on: chrome-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
