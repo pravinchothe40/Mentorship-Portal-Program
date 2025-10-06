@@ -1,0 +1,19 @@
+name: Run Mabl Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  run-mabl-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Mabl CLI
+        run: npm install -g @mablhq/mabl-cli
+
+      - name: Run Mabl Plan
+        run: mabl tests:run --plan-id ${{ secrets.MABL_PLAN_ID }} --api-key ${{ secrets.MABL_API_KEY }}
