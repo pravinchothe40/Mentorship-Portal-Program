@@ -16,5 +16,5 @@ jobs:
         uses: mablhq/github-run-tests-action@v1
         with:
           apiKey: ${{ secrets.MABL_API_KEY }}
-          appId: <your-app-id>
+          appId: ${{ secrets.MABL_APPLICATION_ID }} \
           planId: <your-plan-id>
